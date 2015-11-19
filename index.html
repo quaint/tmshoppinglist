@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-framework="knockoutjs">
+	<head>
+		<meta charset="utf-8">
+		<title>Lista zakupów TM</title>
+	</head>
+	<body>
+		<textarea data-bind="textInput: rawList"></textarea>
+		<button data-bind="click: processList">Wczytaj listę</button>
+		<p data-binding="visible: notBoughtCategories().length > 0">Do kupienia:</p>
+		<div data-bind="foreach: notBoughtCategories">
+			<div data-bind="text: name"></div>
+			<ul data-bind="foreach: notBoughtProducts">
+				<li>
+					<input type="checkbox" data-bind="checked: bought"></input>
+					<label data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></label>
+				</li>
+			</li>
+		</div>
+		<p data-binding="visible: boughtCategories().length > 0">Kupione:</p>
+		<div data-bind="foreach: boughtCategories">
+			<div data-bind="text: name"></div>
+			<ul data-bind="foreach: boughtProducts">
+				<li>
+					<input type="checkbox" data-bind="checked: bought"></input>
+					<label data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></label>
+				</li>
+			</li>
+		</div>
+		<script src="knockout-3.4.0.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
