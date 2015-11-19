@@ -7,7 +7,7 @@
 	<body>
 		<textarea data-bind="textInput: rawList"></textarea>
 		<button data-bind="click: processList">Wczytaj listę</button>
-		<p data-binding="visible: notBoughtCategories().length > 0">Do kupienia:</p>
+		<p data-bind="visible: notBoughtCategories().length > 0">Do kupienia:</p>
 		<div data-bind="foreach: notBoughtCategories">
 			<div data-bind="text: name"></div>
 			<ul data-bind="foreach: notBoughtProducts">
@@ -17,7 +17,7 @@
 				</li>
 			</li>
 		</div>
-		<p data-binding="visible: boughtCategories().length > 0">Kupione:</p>
+		<p data-bind="visible: boughtCategories().length > 0">Kupione:</p>
 		<div data-bind="foreach: boughtCategories">
 			<div data-bind="text: name"></div>
 			<ul data-bind="foreach: boughtProducts">
