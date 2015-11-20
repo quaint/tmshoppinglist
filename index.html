@@ -3,11 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Lista zakupów TM</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="bootstrap.min.css">
 	</head>
 	<body>
 		<textarea data-bind="textInput: rawList"></textarea>
 		<button data-bind="click: processList">Wczytaj listę</button>
-		<p data-bind="visible: notBoughtCategories().length > 0">Do kupienia:</p>
+		<h4 data-bind="visible: notBoughtCategories().length > 0">Do kupienia:</h4>
 		<div data-bind="foreach: notBoughtCategories">
 			<div data-bind="text: name"></div>
 			<ul data-bind="foreach: notBoughtProducts">
@@ -17,7 +19,7 @@
 				</li>
 			</li>
 		</div>
-		<p data-bind="visible: boughtCategories().length > 0">Kupione:</p>
+		<h4 data-bind="visible: boughtCategories().length > 0">Kupione:</h4>
 		<div data-bind="foreach: boughtCategories">
 			<div data-bind="text: name"></div>
 			<ul data-bind="foreach: boughtProducts">
