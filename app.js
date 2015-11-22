@@ -23,7 +23,7 @@ function Category(name, products) {
 function ShoppingListViewModel() {
     var self = this;
     
-    self.rawList = ko.observable("tu wklej listę zakupów");
+    self.rawList = ko.observable("");
     
     self.processList = function() {
         self.categories.removeAll();
@@ -41,9 +41,12 @@ function ShoppingListViewModel() {
 	           }
             }
         }
+        self.selectedTab('notbought'); 
     };
     
     self.categories = ko.observableArray([ ]);
+    
+    self.selectedTab = ko.observable('email');
     
     self.boughtCategories = ko.computed(function () {
         return self.categories().filter(function (category) {
@@ -58,5 +61,7 @@ function ShoppingListViewModel() {
 	});
     
 }
+var viewModel = new ShoppingListViewModel();
+ko.applyBindings(viewModel);
 
-ko.applyBindings(new ShoppingListViewModel());
+Router({ '/:filter': viewModel.selectedTab }).init();

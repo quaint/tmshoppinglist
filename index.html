@@ -2,33 +2,62 @@
 <html lang="en" data-framework="knockoutjs">
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Lista zakupów TM</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">	
 	</head>
 	<body>
-		<textarea data-bind="textInput: rawList"></textarea>
-		<button data-bind="click: processList">Wczytaj listę</button>
-		<h4 data-bind="visible: notBoughtCategories().length > 0">Do kupienia:</h4>
-		<div data-bind="foreach: notBoughtCategories">
-			<div data-bind="text: name"></div>
-			<ul data-bind="foreach: notBoughtProducts">
-				<li>
-					<input type="checkbox" data-bind="checked: bought"></input>
-					<label data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></label>
-				</li>
-			</li>
+		<div class="container">
+			
+			<div class="jumbotron">
+		        <h1>Lista zakupów TM</h1>
+	      	</div>
+			<p>
+			<ul class="nav nav-tabs">
+				<li role="presentation" data-bind="css: { active: selectedTab() == 'email' }"><a href="#/email">E-mail</a></li>
+				<li role="presentation" data-bind="css: { active: selectedTab() == 'notbought' }"><a href="#/notbought">Do kupienia</a></li>
+				<li role="presentation" data-bind="css: { active: selectedTab() == 'bought' }"><a href="#/bought">Kupione</a></li>
+			</ul>
+			</p>
+			
+			<div data-bind="visible: selectedTab() == 'email'">
+				<p>
+				<textarea class="form-control" rows="3" data-bind="textInput: rawList"></textarea>
+				</p>
+				<button type="button" class="btn btn-primary btn-lg btn-block" data-bind="click: processList">Wczytaj listę</button>
+			</div>
+			
+			<div data-bind="visible: selectedTab() == 'notbought'">
+				<div data-bind="foreach: notBoughtCategories">
+					<div data-bind="text: name"></div>
+					<ul data-bind="foreach: notBoughtProducts">
+						<li>
+							<label>
+								<input type="checkbox" data-bind="checked: bought, , uniqueName: true"></input>
+								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div data-bind="visible: selectedTab() == 'bought'">
+				<div data-bind="foreach: boughtCategories">
+					<div data-bind="text: name"></div>
+					<ul data-bind="foreach: boughtProducts">
+						<li>
+							<label>
+								<input type="checkbox" data-bind="checked: bought"></input>
+								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<h4 data-bind="visible: boughtCategories().length > 0">Kupione:</h4>
-		<div data-bind="foreach: boughtCategories">
-			<div data-bind="text: name"></div>
-			<ul data-bind="foreach: boughtProducts">
-				<li>
-					<input type="checkbox" data-bind="checked: bought"></input>
-					<label data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></label>
-				</li>
-			</li>
-		</div>
+		<script src="http://cdn.jsdelivr.net/director/1.1.9/director.min.js"></script>
 		<script src="knockout-3.4.0.js"></script>
 		<script src="app.js"></script>
 	</body>
