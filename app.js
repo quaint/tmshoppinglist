@@ -60,6 +60,22 @@ function ShoppingListViewModel() {
         });
 	});
     
+    self.boughtNameAndCount = ko.computed(function() {
+        var count = 0;
+        ko.utils.arrayForEach(self.boughtCategories(), function(category) {
+            count += category.boughtProducts().length;
+        });
+        return "Kupione (" + self.boughtCategories().length  + "/" + count + ")";
+    });
+    
+    self.notBoughtNameAndCount = ko.computed(function() {
+        var count = 0;
+        ko.utils.arrayForEach(self.notBoughtCategories(), function(category) {
+            count += category.notBoughtProducts().length;
+        });
+        return "Do kupienia (" + self.notBoughtCategories().length  + "/" + count + ")";
+    });
+
 }
 var viewModel = new ShoppingListViewModel();
 ko.applyBindings(viewModel);

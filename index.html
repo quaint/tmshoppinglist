@@ -17,8 +17,8 @@
 			<p>
 			<ul class="nav nav-tabs">
 				<li role="presentation" data-bind="css: { active: selectedTab() == 'email' }"><a href="#/email">E-mail</a></li>
-				<li role="presentation" data-bind="css: { active: selectedTab() == 'notbought' }"><a href="#/notbought">Do kupienia</a></li>
-				<li role="presentation" data-bind="css: { active: selectedTab() == 'bought' }"><a href="#/bought">Kupione</a></li>
+				<li role="presentation" data-bind="css: { active: selectedTab() == 'notbought' }"><a data-bind="text: notBoughtNameAndCount()" href="#/notbought"></a></li>
+				<li role="presentation" data-bind="css: { active: selectedTab() == 'bought' }"><a data-bind="text: boughtNameAndCount()" href="#/bought"></a></li>
 			</ul>
 			</p>
 			
