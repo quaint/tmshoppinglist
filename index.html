@@ -31,7 +31,7 @@
 			
 			<div data-bind="visible: selectedTab() == 'notbought'">
 				<div data-bind="foreach: notBoughtCategories">
-					<div data-bind="text: name"></div>
+					<h4 data-bind="text: name"></h4>
 					<ul data-bind="foreach: notBoughtProducts">
 						<li>
 							<label>
