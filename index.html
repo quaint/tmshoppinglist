@@ -6,7 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Lista zakupów TM</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
 	</head>
 	<body>
 		<div class="container">
@@ -24,7 +25,7 @@
 			
 			<div data-bind="visible: selectedTab() == 'email'">
 				<p>
-				<textarea class="form-control" rows="3" data-bind="textInput: rawList"></textarea>
+				<textarea class="form-control" rows="10" data-bind="textInput: rawList"></textarea>
 				</p>
 				<button type="button" class="btn btn-primary btn-lg btn-block" data-bind="click: processList">Wczytaj listę</button>
 			</div>
@@ -33,7 +34,7 @@
 				<div data-bind="foreach: notBoughtCategories">
 					<h4 data-bind="text: name"></h4>
 					<ul data-bind="foreach: notBoughtProducts">
-						<li>
+						<li class="checkbox">
 							<label>
 								<input type="checkbox" data-bind="checked: bought, , uniqueName: true"></input>
 								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
@@ -47,7 +48,7 @@
 				<div data-bind="foreach: boughtCategories">
 					<h4 data-bind="text: name"></h4>
 					<ul data-bind="foreach: boughtProducts">
-						<li>
+						<li class="checkbox">
 							<label>
 								<input type="checkbox" data-bind="checked: bought"></input>
 								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
