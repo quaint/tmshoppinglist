@@ -34,10 +34,8 @@
 					<div data-bind="text: name"></div>
 					<ul data-bind="foreach: notBoughtProducts">
 						<li>
-							<label>
-								<input type="checkbox" data-bind="checked: bought, , uniqueName: true"></input>
-								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
-							</label>
+                            <input type="checkbox" data-bind="checked: bought, , uniqueName: true"></input>
+                            <span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
 						</li>
 					</ul>
 				</div>
@@ -48,10 +46,8 @@
 					<div data-bind="text: name"></div>
 					<ul data-bind="foreach: boughtProducts">
 						<li>
-							<label>
-								<input type="checkbox" data-bind="checked: bought"></input>
-								<span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
-							</label>
+                            <input type="checkbox" data-bind="checked: bought"></input>
+                            <span  data-bind="text: name, style: { 'text-decoration': bought() ? 'line-through' : 'none' }"></span>
 						</li>
 					</ul>
 				</div>
